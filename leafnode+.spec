@@ -3,13 +3,13 @@ Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
 Version:	2.10
 Release:	1
+License:	free to use, modify and distribute
 Group:		Networking/Daemons
 Group(pl):	Sieciowe/Serwery
-Copyright:	free to use, modify and distribute
-URL:		http://www.io.com/~kazushi/leafnode+/
-Source0:	ftp://hiroshima.isdn.uiuc.edu/leafnode+/%{name}-%{version}.tar.gz
+Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
+URL:		http://www.io.com/~kazushi/leafnode+/
 Requires:	rc-inetd
 Requires:	inetdaemon
 Provides:	nntpserver
@@ -17,15 +17,15 @@ Obsoletes:	leafnode
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Leafnode+ is a USENET software package designed for small sites, with a few
-tens of readers and only a slow link to the net. Leafnode+ has been derived
-from leafnode-1.4.
+Leafnode+ is a USENET software package designed for small sites, with
+a few tens of readers and only a slow link to the net. Leafnode+ has
+been derived from leafnode-1.4.
 
 %description -l pl
 Leafnode+ to zestaw programów umo¿liwiaj±cych stworzenie niewielkiego
-serwera NNTP dla niewielkiej liczby u¿ytkowników, bez potrzeby posiadania
-szybkiego ³±cza do sieci. Leafnode+ zosta³ napisany na podstawie programu
-leafnode-1.4.
+serwera NNTP dla niewielkiej liczby u¿ytkowników, bez potrzeby
+posiadania szybkiego ³±cza do sieci. Leafnode+ zosta³ napisany na
+podstawie programu leafnode-1.4.
 
 %prep
 %setup -q
@@ -40,6 +40,7 @@ make 	LDFLAGS="-s" CFLAGS="$RPM_OPT_FLAGS" \
 	SPOOLDIR=%{_var}/spool/news
 
 %install
+rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT/{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd}
 

@@ -2,13 +2,14 @@ Summary:	NNTP server for small sites
 Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
 Version:	2.15
-Release:	2
+Release:	3
 License:	Free
 Group:		Networking/Daemons
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 # Source0-md5:	1a53c4dd8f0d2896c9f1e4d2104318f3
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
+Patch1:		%{name}-va_fix.patch
 URL:		http://www.io.com/~kazushi/leafnode+/
 Requires(post,postun):	rc-inetd
 Requires:	inetdaemon
@@ -31,6 +32,7 @@ podstawie programu leafnode-1.4.
 %prep
 %setup -q
 %patch0 -p1
+%patch1
 
 %build
 %{__make} LDFLAGS="%{rpmldflags}" \

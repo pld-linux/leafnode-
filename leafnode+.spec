@@ -54,7 +54,7 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
 gzip -9nf README COPYING FAQ Changes config.example
 
-install %{SOURCE1} /etc/sysconfig/rc-inetd/leafnode+
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/leafnode+
 
 %clean
 rm -rf $RPM_BUILD_ROOT

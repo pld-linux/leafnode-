@@ -32,7 +32,7 @@ podstawie programu leafnode-1.4.
 %patch0 -p1
 
 %build
-make 	LDFLAGS="-s" CFLAGS="$RPM_OPT_FLAGS" \
+%{__make} 	LDFLAGS="-s" CFLAGS="$RPM_OPT_FLAGS" \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \

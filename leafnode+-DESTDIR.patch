@@ -1,0 +1,73 @@
+diff -Naur leafnode+-2.10/Makefile leafnode+-2.10-patched/Makefile
+--- leafnode+-2.10/Makefile	Thu Jan  6 02:43:13 2000
++++ leafnode+-2.10-patched/Makefile	Sun Apr  9 00:32:00 2000
+@@ -1,5 +1,6 @@
+ # -*- makefile -*-
+ # $Orig-Id: Makefile,v 1.16 1997/07/20 00:28:31 agulbra Exp $
++DESTDIR =
+ CC = gcc
+ DEBUG = -g -Wall -Wformat -Wstrict-prototypes -Wmissing-prototypes 
+ CFLAGS = $(DEBUG)
+@@ -8,6 +9,7 @@
+ BINDIR = $(PREFIX)/sbin
+ MANDIR = $(PREFIX)/man
+ VERSION = 2.10
++RANLIB = ranlib
+ #
+ # If you want to use lockf rather than flock, use this
+ #
+@@ -79,41 +81,30 @@
+ 		-DVERSION=\"$(VERSION)\" $<
+ 
+ install: leafnode fetchnews texpire checkgroups leaftool
+-	cp leafnode $(BINDIR)/leafnode
+-	cp fetchnews $(BINDIR)/fetchnews
+-	cp texpire $(BINDIR)/texpire
+-	cp checkgroups $(BINDIR)/checkgroups
+-	cp leaftool $(BINDIR)/leaftool
+-	chmod 750 $(BINDIR)/leafnode
+-	chmod 750 $(BINDIR)/fetchnews
+-	chmod 750 $(BINDIR)/texpire
+-	chmod 750 $(BINDIR)/checkgroups
+-	chmod 750 $(BINDIR)/leaftool
+-	chown news.news $(BINDIR)/leafnode
+-	chown news.news $(BINDIR)/fetchnews
+-	chown news.news $(BINDIR)/texpire
+-	chown news.news $(BINDIR)/checkgroups
+-	chown news.news $(BINDIR)/leaftool
+-	cp *.8 $(MANDIR)/man8
++	install -d $(DESTDIR)
++	cp leafnode $(DESTDIR)$(BINDIR)/leafnode
++	cp fetchnews $(DESTDIR)$(BINDIR)/fetchnews
++	cp texpire $(DESTDIR)$(BINDIR)/texpire
++	cp checkgroups $(DESTDIR)$(BINDIR)/checkgroups
++	cp leaftool $(DESTDIR)$(BINDIR)/leaftool
++	cp *.8 $(DESTDIR)$(MANDIR)/man8
+ 	@if [ ! -d $(SPOOLDIR)/message.id ]; then echo don"'"t forget to do '"'make installall'"' to create $(SPOOLDIR)/message.id; fi
+ 	@if [ -f $(BINDIR)/fetch ]; then echo don"'"t forget to change the name of a command in scripts and crontab from fetch into fetchnews.; fi
+ 	@if [ -f $(BINDIR)/newsfetch ]; then echo don"'"t forget to change the name of a command in scripts and crontab from newsfetch into fetchnews.; fi
+ 
+ installall: install
+-	-mkdir -p $(SPOOLDIR) $(LIBDIR)
+-	-mkdir -p $(SPOOLDIR)/message.id
+-	-mkdir -p $(SPOOLDIR)/interesting.groups
+-	-mkdir -p $(SPOOLDIR)/out.going
+-	cd $(SPOOLDIR)/message.id ; for a in 0 1 2 3 4 5 6 7 8 9 ; do \
++	-mkdir -p $(DESTDIR)$(SPOOLDIR) $(LIBDIR)
++	-mkdir -p $(DESTDIR)$(SPOOLDIR)/message.id
++	-mkdir -p $(DESTDIR)$(SPOOLDIR)/interesting.groups
++	-mkdir -p $(DESTDIR)$(SPOOLDIR)/out.going
++	cd $(DESTDIR)$(SPOOLDIR)/message.id ; for a in 0 1 2 3 4 5 6 7 8 9 ; do \
+ 		for b in 0 1 2 3 4 5 6 7 8 9 ; do \
+ 			mkdir -p $${a}$${b}0 $${a}$${b}1 $${a}$${b}2 \
+ 				$${a}$${b}3 $${a}$${b}4 $${a}$${b}5 \
+ 				$${a}$${b}6 $${a}$${b}7 $${a}$${b}8 \
+ 				$${a}$${b}9 ; \
+ 			done ; done
+-	cp config.example $(LIBDIR)
+-	chown -R news.news $(LIBDIR)/. $(SPOOLDIR)/.
+-	chmod 2750 $(SPOOLDIR)
++	cp config.example $(DESTDIR)$(LIBDIR)
+ 	@echo edit /etc/inetd.conf to start $(BINDIR)/leafnode
+ 
+ dist:

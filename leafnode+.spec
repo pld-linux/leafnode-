@@ -80,7 +80,7 @@ fi
 %defattr(644,root,root,755)
 %doc *.gz
 %config %dir %attr(770,root,news) %{_sysconfdir}/leafnode+
-%ghost %attr(640,news,news) %{_sysconfdir}/leafnode+/groupinfo
+%ghost %attr(664,news,news) %{_sysconfdir}/leafnode+/groupinfo
 %attr(750,root,news) %{_sbindir}/*
 %attr(2770,root,news) %{_var}/spool/news
 %attr(640,root,root) /etc/sysconfig/rc-inetd/nntpd

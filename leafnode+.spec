@@ -33,7 +33,7 @@ podstawie programu leafnode-1.4.
 %patch0 -p1
 
 %build
-%{__make} LDFLAGS="%{!?debug:-s}" \
+%{__make} LDFLAGS="%{rpmldflags}" \
 	CFLAGS="%{rpmcflags} -DHAVE_POSIX_REGCOMP" \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \

@@ -11,11 +11,11 @@ Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.io.com/~kazushi/leafnode+/
-Requires:	rc-inetd
+Requires(post,postun):	rc-inetd
 Requires:	inetdaemon
 Provides:	nntpserver
-Obsoletes:	leafnode
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	leafnode
 
 %description
 Leafnode+ is a USENET software package designed for small sites, with

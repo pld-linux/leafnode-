@@ -1,0 +1,11 @@
+--- util.c~	2004-10-09 20:58:38.830560816 +0000
++++ util.c	2004-10-09 21:03:29.312400864 +0000
+@@ -1403,6 +1403,8 @@
+     va_list ap;
+     va_start(ap, message);
+     vsyslog(priority, message, ap);
++    va_end(ap);
++    va_start(ap,message);
+     if (priority <= LOG_ERR) {
+ 	vprintf(message, ap);
+ 	printf("\n");

@@ -1,7 +1,7 @@
 Summary:	NNTP server for small sites
 Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
-Version:	2.11
+Version:	2.12
 Release:	1
 License:	free to use, modify and distribute
 Group:		Networking/Daemons
@@ -34,7 +34,7 @@ podstawie programu leafnode-1.4.
 
 %build
 %{__make} LDFLAGS="%{!?debug:-s}" \
-	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
+	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g} -DHAVE_POSIX_REGCOMP" \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \
@@ -47,7 +47,7 @@ install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd} \
 	$RPM_BUILD_ROOT%{_var}/spool/news
 
-make install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \

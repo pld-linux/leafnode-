@@ -54,7 +54,7 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
 gzip -9nf README COPYING FAQ Changes config.example
 
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/leafnode+
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/nntpd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -67,4 +67,4 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %attr(640,news,news) %{_sysconfdir}/leafnode+/groupinfo
 %attr(750,news,news) %{_sbindir}/*
 %attr(2750,news,news) %{_var}/spool/news
-%attr(640,root,root) /etc/sysconfig/rc-inetd/leafnode+
+%attr(640,root,root) /etc/sysconfig/rc-inetd/nntpd

@@ -2,7 +2,7 @@ Summary:	NNTP server for small sites
 Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
 Version:	2.14
-Release:	3
+Release:	4
 License:	free to use, modify and distribute
 Group:		Networking/Daemons
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
@@ -14,6 +14,7 @@ Requires:	inetdaemon
 Provides:	nntpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	leafnode
+Conflicts:	inn
 
 %description
 Leafnode+ is a USENET software package designed for small sites, with

@@ -43,8 +43,9 @@ podstawie programu leafnode-1.4.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8} \
-	$RPM_BUILD_ROOT/{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd}
+install -d $RPM_BUILD_ROOT{%{_sbindir},%{_mandir}/man8} \
+	$RPM_BUILD_ROOT{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd} \
+	$RPM_BUILD_ROOT%{_var}/spool/news
 
 make install \
 	DESTDIR=$RPM_BUILD_ROOT \

@@ -8,8 +8,11 @@ Group(pl):	Sieciowe/Serwery
 Copyright:	free to use, modify and distribute
 URL:		http://www.io.com/~kazushi/leafnode+/
 Source0:	ftp://hiroshima.isdn.uiuc.edu/leafnode+/%{name}-%{version}.tar.gz
+Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
+Requires:	rc-inetd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Conflicts:	leafnode
 
 %description
 Leafnode+ is a USENET software package designed for small sites, with a few
@@ -49,14 +52,17 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
 gzip -9nf README COPYING FAQ Changes config.example
 
+install %{SOURCE1} /etc/sysconfig/rc-inetd/leafnode+
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc *.gz
+%{_mandir}/man8/*
 %config %dir %attr(750,news,news) %{_sysconfdir}/leafnode+
 %ghost %attr(640,news,news) %{_sysconfdir}/leafnode+/groupinfo
 %attr(750,news,news) %{_sbindir}/*
-%attr(644,root,man) %{_mandir}/man8/*
 %attr(2750,news,news) %{_var}/spool/news
+%attr(640,root,root) /etc/sysconfig/rc-inetd/leafnode+

@@ -4,5 +4,6 @@ PROTOCOL=tcp
 PORT=119
 FLAGS=nowait
 USER=news
+GROUP=news
 SERVER=tcpd
 DAEMON=/usr/sbin/leafnode

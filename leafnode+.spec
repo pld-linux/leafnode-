@@ -5,6 +5,7 @@ Version:	2.11
 Release:	1
 License:	free to use, modify and distribute
 Group:		Networking/Daemons
+Group(de):	Netzwerkwesen/Server
 Group(pl):	Sieciowe/Serwery
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
@@ -32,7 +33,8 @@ podstawie programu leafnode-1.4.
 %patch0 -p1
 
 %build
-%{__make} 	LDFLAGS="-s" CFLAGS="$RPM_OPT_FLAGS" \
+%{__make} LDFLAGS="%{!?debug:-s}" \
+	CFLAGS="%{!?debug:$RPM_OPT_FLAGS}%{?debug:-O -g}" \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \
@@ -44,20 +46,19 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8} \
 	$RPM_BUILD_ROOT/{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd}
 
-make	DESTDIR=$RPM_BUILD_ROOT \
+make install \
+	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \
 	LIBDIR=%{_sysconfdir}/%{name} \
 	SPOOLDIR=%{_var}/spool/news \
-	installall
+
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/nntpd
 
 touch $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/groupinfo
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
-gzip -9nf README COPYING FAQ Changes config.example \
-	$RPM_BUILD_ROOT%{_mandir}/man8/*
-
-install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/nntpd
+gzip -9nf README COPYING FAQ Changes config.example
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -77,9 +78,9 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%{_mandir}/man8/*
 %config %dir %attr(750,news,news) %{_sysconfdir}/leafnode+
 %ghost %attr(640,news,news) %{_sysconfdir}/leafnode+/groupinfo
 %attr(750,news,news) %{_sbindir}/*
 %attr(2750,news,news) %{_var}/spool/news
 %attr(640,root,root) /etc/sysconfig/rc-inetd/nntpd
+%{_mandir}/man8/*

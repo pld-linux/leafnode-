@@ -1,0 +1,8 @@
+SERVICE_NAME=nntp
+SOCK_TYPE=stream
+PROTOCOL=tcp
+PORT=119
+FLAGS=nowait
+USER=news
+SERVER=tcpd
+DAEMON=/usr/sbin/leafnode

@@ -5,8 +5,6 @@ Version:	2.14
 Release:	3
 License:	free to use, modify and distribute
 Group:		Networking/Daemons
-Group(de):	Netzwerkwesen/Server
-Group(pl):	Sieciowe/Serwery
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch

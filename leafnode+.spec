@@ -6,6 +6,7 @@ Release:	5
 License:	Free
 Group:		Networking/Daemons
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
+# Source0-md5:	34f0bb1fe516f4cdc0166c965c77b117
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
 URL:		http://www.io.com/~kazushi/leafnode+/

@@ -2,7 +2,7 @@ Summary:	NNTP server for small sites
 Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
 Version:	2.12
-Release:	1
+Release:	2
 License:	free to use, modify and distribute
 Group:		Networking/Daemons
 Group(de):	Netzwerkwesen/Server

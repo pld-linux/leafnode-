@@ -34,7 +34,7 @@ podstawie programu leafnode-1.4.
 
 %build
 %{__make} LDFLAGS="%{!?debug:-s}" \
-	CFLAGS="%{?debug:-O0 -g}%{!?debug:$RPM_OPT_FLAGS} -DHAVE_POSIX_REGCOMP" \
+	CFLAGS="%{rpmcflags} -DHAVE_POSIX_REGCOMP" \
 	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \
 	MANDIR=%{_mandir} \

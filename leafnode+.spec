@@ -52,7 +52,8 @@ make	DESTDIR=$RPM_BUILD_ROOT \
 touch $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/groupinfo
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
-gzip -9nf README COPYING FAQ Changes config.example
+gzip -9nf README COPYING FAQ Changes config.example \
+	$RPM_BUILD_ROOT%{_mandir}/man8/*
 
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/nntpd
 

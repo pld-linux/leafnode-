@@ -39,7 +39,8 @@ make 	LDFLAGS="-s" CFLAGS="$RPM_OPT_FLAGS" \
 	SPOOLDIR=%{_var}/spool/news
 
 %install
-install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8,%{_sysconfdir}/%{name}}
+install -d $RPM_BUILD_ROOT/{%{_sbindir},%{_mandir}/man8} \
+	$RPM_BUILD_ROOT/{%{_sysconfdir}/%{name},/etc/sysconfig/rc-inetd}
 
 make	DESTDIR=$RPM_BUILD_ROOT \
 	PREFIX=%{_prefix} \

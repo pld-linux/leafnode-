@@ -11,8 +11,9 @@ Source0:	ftp://hiroshima.isdn.uiuc.edu/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
 Requires:	rc-inetd
+Requires:	inetdaemon
+Provides:	nntpserver
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Conflicts:	leafnode
 
 %description
 Leafnode+ is a USENET software package designed for small sites, with a few

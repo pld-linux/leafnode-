@@ -2,8 +2,8 @@ Summary:	NNTP server for small sites
 Summary(pl):	Serwer NNTP przeznaczony dla niedu¿ych serwerów
 Name:		leafnode+
 Version:	2.14
-Release:	4
-License:	free to use, modify and distribute
+Release:	5
+License:	Free
 Group:		Networking/Daemons
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
 Source1:	%{name}.inetd
@@ -58,8 +58,6 @@ install %{SOURCE1} $RPM_BUILD_ROOT/etc/sysconfig/rc-inetd/nntpd
 touch $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/groupinfo
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 
-gzip -9nf README COPYING FAQ Changes config.example
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -77,7 +75,7 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc README COPYING FAQ Changes config.example
 %config %dir %attr(770,root,news) %{_sysconfdir}/leafnode+
 %ghost %attr(664,news,news) %{_sysconfdir}/leafnode+/groupinfo
 %attr(750,root,news) %{_sbindir}/*

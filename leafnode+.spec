@@ -79,9 +79,9 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc *.gz
-%config %dir %attr(750,news,news) %{_sysconfdir}/leafnode+
+%config %dir %attr(770,root,news) %{_sysconfdir}/leafnode+
 %ghost %attr(640,news,news) %{_sysconfdir}/leafnode+/groupinfo
-%attr(750,news,news) %{_sbindir}/*
-%attr(2750,news,news) %{_var}/spool/news
+%attr(750,root,news) %{_sbindir}/*
+%attr(2770,root,news) %{_var}/spool/news
 %attr(640,root,root) /etc/sysconfig/rc-inetd/nntpd
 %{_mandir}/man8/*

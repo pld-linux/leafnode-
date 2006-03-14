@@ -1,0 +1,2 @@
+- fixed %install (missing make directory
+  $RPM_BUILD_ROOT%{_var}/spool/news).

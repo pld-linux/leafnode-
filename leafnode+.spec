@@ -11,12 +11,13 @@ Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-va_fix.patch
 URL:		http://www.io.com/~kazushi/leafnode+/
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,postun):	rc-inetd
 Requires:	inetdaemon
 Provides:	nntpserver
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	leafnode
 Conflicts:	inn
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Leafnode+ is a USENET software package designed for small sites, with
@@ -65,15 +66,11 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/%{name}/config.example
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload 1>&2
-else
-	echo "Type \"/etc/rc.d/init.d/rc-inetd start\" to start inet server" 1>&2
-fi
+%service -q rc-inetd reload
 
 %postun
-if [ -f /var/lock/subsys/rc-inetd ]; then
-	/etc/rc.d/init.d/rc-inetd reload
+if [ "$1" = 0 ]; then
+	%service -q rc-inetd reload
 fi
 
 %files

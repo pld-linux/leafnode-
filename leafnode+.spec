@@ -1,5 +1,5 @@
 Summary:	NNTP server for small sites
-Summary(pl):	Serwer NNTP przeznaczony dla nieduøych serwerÛw
+Summary(pl.UTF-8):   Serwer NNTP przeznaczony dla niedu≈ºych serwer√≥w
 Name:		leafnode+
 Version:	2.15
 Release:	3
@@ -24,10 +24,10 @@ Leafnode+ is a USENET software package designed for small sites, with
 a few tens of readers and only a slow link to the net. Leafnode+ has
 been derived from leafnode-1.4.
 
-%description -l pl
-Leafnode+ to zestaw programÛw umoøliwiaj±cych stworzenie niewielkiego
-serwera NNTP dla niewielkiej liczby uøytkownikÛw, bez potrzeby
-posiadania szybkiego ≥±cza do sieci. Leafnode+ zosta≥ napisany na
+%description -l pl.UTF-8
+Leafnode+ to zestaw program√≥w umo≈ºliwiajƒÖcych stworzenie niewielkiego
+serwera NNTP dla niewielkiej liczby u≈ºytkownik√≥w, bez potrzeby
+posiadania szybkiego ≈ÇƒÖcza do sieci. Leafnode+ zosta≈Ç napisany na
 podstawie programu leafnode-1.4.
 
 %prep

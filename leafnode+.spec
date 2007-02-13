@@ -1,5 +1,5 @@
 Summary:	NNTP server for small sites
-Summary(pl.UTF-8):   Serwer NNTP przeznaczony dla niedużych serwerów
+Summary(pl.UTF-8):	Serwer NNTP przeznaczony dla niedużych serwerów
 Name:		leafnode+
 Version:	2.15
 Release:	3

@@ -2,7 +2,7 @@ Summary:	NNTP server for small sites
 Summary(pl.UTF-8):	Serwer NNTP przeznaczony dla niedużych serwerów
 Name:		leafnode+
 Version:	2.15
-Release:	3
+Release:	4
 License:	Free
 Group:		Networking/Daemons
 Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz

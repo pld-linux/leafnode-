@@ -5,12 +5,12 @@ Version:	2.15
 Release:	4
 License:	Free
 Group:		Networking/Daemons
-Source0:	http://www.io.com/~kazushi/leafnode+/%{name}-%{version}.tar.gz
+Source0:	http://www25.big.jp/~jam/leafnode+/%{name}-%{version}.tar.gz
 # Source0-md5:	1a53c4dd8f0d2896c9f1e4d2104318f3
 Source1:	%{name}.inetd
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-va_fix.patch
-URL:		http://www.io.com/~kazushi/leafnode+/
+URL:		http://www25.big.jp/~jam/leafnode+/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post,postun):	rc-inetd
 Requires:	inetdaemon

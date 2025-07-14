@@ -32,8 +32,8 @@ podstawie programu leafnode-1.4.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1
+%patch -P0 -p1
+%patch -P1
 
 %build
 %{__make} LDFLAGS="%{rpmldflags}" \
